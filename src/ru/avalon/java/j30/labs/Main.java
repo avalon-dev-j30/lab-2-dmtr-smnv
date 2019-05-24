@@ -16,9 +16,9 @@ import java.util.*;
 public class Main {
 
     /**
-     * Точка входа в приложение
+     * Точка входа в приложение.
      * 
-     * @param args the command line arguments
+     * @param args - the command line arguments.
      */
     public static void main(String[] args) throws SQLException, IOException {
         try (Connection connection = getConnection()) {
@@ -30,16 +30,12 @@ public class Main {
             code.save(connection);
             printAllCodes(connection);
         }
-        
-        /*
-         * TODO #14 Средствами отладчика проверьте корректность работы программы
-         */
     }
     
     /**
-     * Выводит в кодсоль все коды товаров
+     * Выводит в кодсоль все коды товаров.
      * 
-     * @param connection действительное соединение с базой данных
+     * @param connection - действительное соединение с базой данных.
      * @throws SQLException 
      */    
     private static void printAllCodes(Connection connection) throws SQLException {
@@ -50,19 +46,19 @@ public class Main {
     }
     
     /**
-     * Возвращает URL, описывающий месторасположение базы данных
+     * Возвращает URL, описывающий месторасположение базы данных.
      * 
-     * @return URL в виде объекта класса {@link String}
+     * @return URL в виде объекта класса {@link String}.
      */
     private static String getUrl() throws IOException {
         return getProperties().getProperty("url");
     }
     
     /**
-     * Возвращает параметры соединения
+     * Возвращает параметры соединения.
      * 
      * @return Объект класса {@link Properties}, содержащий параметры user и 
-     * password
+     * password.
      */
     private static Properties getProperties() throws IOException {
         Properties config = new Properties();
@@ -71,14 +67,14 @@ public class Main {
         }
         return config;
     }
+    
     /**
-     * Возвращает соединение с базой данных Sample
+     * Возвращает соединение с базой данных Sample.
      * 
-     * @return объект типа {@link Connection}
+     * @return объект типа {@link Connection}.
      * @throws SQLException
      */
     private static Connection getConnection() throws SQLException, IOException {
         return DriverManager.getConnection(getUrl(), getProperties());
     }
-    
 }

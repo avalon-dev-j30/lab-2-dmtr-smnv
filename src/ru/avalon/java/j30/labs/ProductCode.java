@@ -12,26 +12,26 @@ import java.util.*;
 public class ProductCode {
 
     /**
-     * Код товара
+     * Код товара.
      */
     private String code;
     
     /**
-     * Кода скидки
+     * Кода скидки.
      */
     private char discountCode;
     
     /**
-     * Описание
+     * Описание.
      */
     private String description;
     
     /**
-     * Основной конструктор типа {@link ProductCode}
+     * Основной конструктор типа {@link ProductCode}.
      * 
-     * @param code код товара
-     * @param discountCode код скидки
-     * @param description описание 
+     * @param code - код товара.
+     * @param discountCode - код скидки.
+     * @param description - описание.
      */
     public ProductCode(String code, char discountCode, String description) {
         this.code = code;
@@ -40,9 +40,9 @@ public class ProductCode {
     }
     
     /**
-     * Инициализирует объект значениями из переданного {@link ResultSet}
+     * Инициализирует объект значениями из переданного {@link ResultSet}.
      * 
-     * @param set {@link ResultSet}, полученный в результате запроса, 
+     * @param set - {@link ResultSet}, полученный в результате запроса, 
      * содержащего все поля таблицы PRODUCT_CODE базы данных Sample.
      * @throws SQLException
      */
@@ -53,54 +53,61 @@ public class ProductCode {
     }
     
     /**
-     * Возвращает код товара
+     * Возвращает код товара.
      * 
-     * @return Объект типа {@link String}
+     * @return Объект типа {@link String}.
      */
     public String getCode() {
         return code;
     }
     
     /**
-     * Устанавливает код товара
+     * Переменная для хранения прежнего значения кода товара.
+     */
+    private String previousCode;
+    
+    /**
+     * Устанавливает новое значение кода товара, сохраняя прежнее в переменную
+     * типа {@link String}.
      * 
-     * @param code код товара
+     * @param code - код товара.
      */
     public void setCode(String code) {
+        previousCode = getCode();
         this.code = code;
     }
     
     /**
-     * Возвращает код скидки
+     * Возвращает код скидки.
      * 
-     * @return Объект типа {@link String}
+     * @return Объект типа {@link String}.
      */
     public char getDiscountCode() {
         return discountCode;
     }
     
     /**
-     * Устанавливает код скидки
+     * Устанавливает код скидки.
      * 
-     * @param discountCode код скидки
+     * @param discountCode - код скидки.
      */
     public void setDiscountCode(char discountCode) {
         this.discountCode = discountCode;
     }
     
     /**
-     * Возвращает описание
+     * Возвращает описание.
      * 
-     * @return Объект типа {@link String}
+     * @return Объект типа {@link String}.
      */
     public String getDescription() {
         return description;
     }
     
     /**
-     * Устанавливает описание
+     * Устанавливает описание.
      * 
-     * @param description описание
+     * @param description - описание.
      */
     public void setDescription(String description) {
         this.description = description;
@@ -109,7 +116,7 @@ public class ProductCode {
     /**
      * Хеш-функция типа {@link ProductCode}.
      * 
-     * @return Значение хеш-кода объекта типа {@link ProductCode}
+     * @return Значение хеш-кода объекта типа {@link ProductCode}.
      */
     @Override
     public int hashCode() {
@@ -118,9 +125,9 @@ public class ProductCode {
     
     /**
      * Сравнивает некоторый произвольный объект с текущим объектом типа 
-     * {@link ProductCode}
+     * {@link ProductCode}.
      * 
-     * @param obj Объект, скоторым сравнивается текущий объект.
+     * @param obj - объект, с которым сравнивается текущий объект.
      * @return true, если объект obj тождественен текущему объекту. В обратном 
      * случае - false.
      */
@@ -129,8 +136,7 @@ public class ProductCode {
         if (obj instanceof ProductCode){
             ProductCode otherProductCode = (ProductCode) obj;
             return this.code.equals(otherProductCode.code)
-                && this.discountCode == otherProductCode.discountCode
-                && this.description.equals(otherProductCode.description);
+                || this.description.equals(otherProductCode.description);
         }
         return false;
     }
@@ -138,7 +144,7 @@ public class ProductCode {
     /**
      * Возвращает строковое представление кода товара.
      * 
-     * @return Объект типа {@link String}
+     * @return Объект типа {@link String}.
      */
     @Override
     public String toString() {
@@ -149,8 +155,8 @@ public class ProductCode {
      * Возвращает запрос на выбор всех записей из таблицы PRODUCT_CODE 
      * базы данных Sample
      * 
-     * @param connection действительное соединение с базой данных
-     * @return Запрос в виде объекта класса {@link PreparedStatement}
+     * @param connection - действительное соединение с базой данных.
+     * @return Запрос в виде объекта класса {@link PreparedStatement}.
      * @throws SQLException
      */
     public static PreparedStatement getSelectQuery(Connection connection) throws SQLException {
@@ -160,10 +166,10 @@ public class ProductCode {
     
     /**
      * Возвращает запрос на добавление записи в таблицу PRODUCT_CODE 
-     * базы данных Sample
+     * базы данных Sample.
      * 
-     * @param connection действительное соединение с базой данных
-     * @return Запрос в виде объекта класса {@link PreparedStatement}
+     * @param connection - действительное соединение с базой данных.
+     * @return Запрос в виде объекта класса {@link PreparedStatement}.
      * @throws SQLException
      */
     public static PreparedStatement getInsertQuery(Connection connection) throws SQLException {
@@ -175,8 +181,8 @@ public class ProductCode {
      * Возвращает запрос на обновление значений записи в таблице PRODUCT_CODE 
      * базы данных Sample
      * 
-     * @param connection действительное соединение с базой данных
-     * @return Запрос в виде объекта класса {@link PreparedStatement}
+     * @param connection - действительное соединение с базой данных.
+     * @return Запрос в виде объекта класса {@link PreparedStatement}.
      * @throws SQLException
      */
     public static PreparedStatement getUpdateQuery(Connection connection) throws SQLException {
@@ -187,9 +193,9 @@ public class ProductCode {
     /**
      * Преобразует {@link ResultSet} в коллекцию объектов типа {@link ProductCode}
      * 
-     * @param set {@link ResultSet}, полученный в результате запроса, содержащего 
-     * все поля таблицы PRODUCT_CODE базы данных Sample
-     * @return Коллекция объектов типа {@link ProductCode}
+     * @param set - {@link ResultSet}, полученный в результате запроса, содержащего 
+     * все поля таблицы PRODUCT_CODE базы данных Sample.
+     * @return Коллекция объектов типа {@link ProductCode}.
      * @throws SQLException 
      */
     public static Collection<ProductCode> convert(ResultSet set) throws SQLException {
@@ -207,16 +213,16 @@ public class ProductCode {
      * <p>
      * Если запись уже существует в базе данных, то выполняется запрос типа UPDATE.
      * 
-     * @param connection действительное соединение с базой данных
+     * @param connection - действительное соединение с базой данных
      * @throws SQLException
      */
     public void save(Connection connection) throws SQLException {
-        PreparedStatement statement = getSelectQuery(connection);
-        ProductCode actualProduct = new ProductCode(code, discountCode, description);
         Collection<ProductCode> previousState = all(connection);
+        ProductCode actualProduct = new ProductCode(code, discountCode, description);
+        PreparedStatement statement;
         if (previousState.contains(actualProduct)) {
             statement = getUpdateQuery(connection);
-            // something...
+            statement.setString(4, previousCode);
         } else {
             statement = getInsertQuery(connection);
         }
@@ -226,13 +232,12 @@ public class ProductCode {
             statement.execute();
     }
     
-    
     /**
      * Возвращает все записи таблицы PRODUCT_CODE в виде коллекции объектов
-     * типа {@link ProductCode}
+     * типа {@link ProductCode}.
      * 
-     * @param connection действительное соединение с базой данных
-     * @return коллекция объектов типа {@link ProductCode}
+     * @param connection - действительное соединение с базой данных.
+     * @return коллекция объектов типа {@link ProductCode}.
      * @throws SQLException 
      */
     public static Collection<ProductCode> all(Connection connection) throws SQLException {
